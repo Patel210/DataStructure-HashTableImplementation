@@ -55,4 +55,21 @@ public class MyHashTable<K, V> {
 			return (myMapNode == null) ? null : myMapNode.getValue();
 		}
 	}
+
+	/**
+	 * @param key
+	 * @return To Remove particular K,V pair using Key
+	 */
+	public boolean revome(K key) {
+		int index = getIndex(key);
+		MyLinkedList<K> myLinkedList = myLinkedLists[index];
+		if (myLinkedList != null) {
+			MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) myLinkedList.search(key);
+			if (myMapNode != null) {
+				myLinkedList.deleteAnElement(myMapNode.getKey());
+				return true;
+			}
+		}
+		return false;
+	}
 }
